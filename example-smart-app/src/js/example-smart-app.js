@@ -34,7 +34,7 @@
 
           var fname = '';
           var lname = '';
-          var status = patient.status;
+          var status = medication.status;
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
