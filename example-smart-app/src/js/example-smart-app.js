@@ -25,13 +25,10 @@
          var medication = smart.patient.api.fetchAll({
                     type: 'MedicationOrder'
                   });
-        var medicationAdmin = smart.patient.api.fetchAll({
-          type:'MedicationAdministration'
-        });
 
-        $.when(pt, obv,medication,medicationAdmin).fail(onError);
+        $.when(pt, obv,medication).fail(onError);
 
-        $.when(pt, obv, medication,medicationAdmin).done(function(patient, obv, medication,medicationAdmin) {
+        $.when(pt, obv, medication).done(function(patient, obv, medication) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
@@ -75,12 +72,6 @@
           });
           console.log('Medications:', medications);
           p.medications = medications.join(', ');
-
-          var medicationAdmins = medicationAdmin.map(function(medAdmin){
-            return medAdmin.medicationCodeableConcept.text;
-          });
-          console.log("MedicationAdmins",medicationAdmins);
-          p.medicationAdmins = medicationAdmins.join(', ');
           ret.resolve(p);
         });
       } else {
@@ -106,7 +97,6 @@
       hdl: {value: ''},
       medications: {value: ''},
       status: {value: ''},
-      medicationAdministration: {value:''}
     };
   }
 
@@ -152,7 +142,6 @@
     $('#hdl').html(p.hdl);
     $('#medicationList').html(p.medications);
     $('#status').html(p.status);
-    $('#medicationAdministration').html(p.medicationAdministration);
   };
 
 })(window);
