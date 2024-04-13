@@ -7,11 +7,11 @@
       ret.reject();
     }
 
-    // Extracting the required information
-var dateWritten = jsonData.entry[0].resource.dateWritten;
-var dosageInstruction = jsonData.entry[0].resource.dosageInstruction[0].text;
-var status = jsonData.entry[0].resource.status;
-var resourceType = jsonData.entry[0].resource.resourceType;
+// Extracting the required information
+var dateWritten = medication[0].dateWritten;
+var dosageInstruction = medication[0].dosageInstruction[0].text;
+var status = medication[0].status;
+var resourceType = medication[0].resourceType;
 
 // Displaying the information in the UI
 document.getElementById('dateWritten').innerText = 'Date Written: ' + dateWritten;
