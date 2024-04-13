@@ -34,6 +34,7 @@
 
           var fname = '';
           var lname = '';
+          var status = patient.status;
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
@@ -52,6 +53,7 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
+          p.status = status;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -93,7 +95,8 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-      medications: {value: ''}
+      medications: {value: ''},
+      status: {value: ''}
     };
   }
 
@@ -138,6 +141,7 @@
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
     $('#medicationList').html(p.medications);
+    $('#status').html(p.status);
   };
 
 })(window);
