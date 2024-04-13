@@ -66,7 +66,7 @@
 
           //Medications
            var medications = medication.map(function(med) {
-            return med.medicationCodeableConcept.text;
+            return med.medicationCodeableConcept.text, med.medicationCodeableConcept.status;
           });
           console.log('Medications:', medications);
           p.medications = medications.join(', ');
