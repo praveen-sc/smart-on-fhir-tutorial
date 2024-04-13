@@ -7,6 +7,18 @@
       ret.reject();
     }
 
+    // Extracting the required information
+var dateWritten = jsonData.entry[0].resource.dateWritten;
+var dosageInstruction = jsonData.entry[0].resource.dosageInstruction[0].text;
+var status = jsonData.entry[0].resource.status;
+var resourceType = jsonData.entry[0].resource.resourceType;
+
+// Displaying the information in the UI
+document.getElementById('dateWritten').innerText = 'Date Written: ' + dateWritten;
+document.getElementById('dosageInstruction').innerText = 'Dosage Instruction: ' + dosageInstruction;
+document.getElementById('status').innerText = 'Status: ' + status;
+document.getElementById('resourceType').innerText = 'Resource Type: ' + resourceType;
+
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
