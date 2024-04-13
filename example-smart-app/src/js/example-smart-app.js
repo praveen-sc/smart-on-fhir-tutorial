@@ -67,19 +67,11 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
           //Medications
-var medications = bundle.entry.map(function(entry) {
-    var medicationOrder = entry.resource;
-    var dosageInstructions = medicationOrder.dosageInstruction.map(function(instruction) {
-        return instruction.text;
-    });
-    var medicationName = medicationOrder.medicationCodeableConcept.text;
-    return {
-        medication: medicationName,
-        dosageInstructions: dosageInstructions
-    };
-});
-
-console.log('Medications:', medications);
+           var medications = medication.map(function(med) {
+            return med.medicationCodeableConcept.text;
+          });
+          console.log('Medications:', medications);
+          p.medications = medications.join(', ');
           ret.resolve(p);
         });
       } else {
