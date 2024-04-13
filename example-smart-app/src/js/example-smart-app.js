@@ -8,10 +8,10 @@
     }
 
 // Extracting the required information
-var dateWritten = medication[0].dateWritten;
-var dosageInstruction = medication[0].dosageInstruction[0].text;
-var status = medication[0].status;
-var resourceType = medication[0].resourceType;
+var dateWritten = medication.dateWritten;
+var dosageInstruction = medication.dosageInstruction.text;
+var status = medication.status;
+var resourceType = medication.resourceType;
 
 // Displaying the information in the UI
 document.getElementById('dateWritten').innerText = 'Date Written: ' + dateWritten;
