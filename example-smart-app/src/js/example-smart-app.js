@@ -66,6 +66,7 @@
 
           //Medications
            var medications = medication.map(function(med) {
+            med.medicationCodeableConcept.additionalInstruction
             return med.medicationCodeableConcept.text;
           });
           console.log('Medications:', medications);
