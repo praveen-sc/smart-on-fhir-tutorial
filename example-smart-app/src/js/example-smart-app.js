@@ -64,12 +64,31 @@
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
-          //Medications
-           var medications = medication.map(function(med) {
-            return med.medicationCodeableConcept.text;
-          });
-          console.log('Medications:', medications);
-          p.medications = medications.join(', ');
+      
+
+          // Function to extract dosage from medication name
+function extractDosage(medName) {
+  var regex = /\d+\s*(mg|mcg|g)/i; // Regular expression to match dosage format
+  var dosageMatch = medName.match(regex);
+  return dosageMatch ? dosageMatch[0] : ''; // Return the dosage if found, otherwise return an empty string
+}
+
+// Arrays to store medications and dosages separately
+var medications = [];
+var dosages = [];
+
+// Iterate through each medication and extract medication name and dosage
+medication.forEach(function(med) {
+  var medName = med.medicationCodeableConcept.text;
+  var dosage = extractDosage(medName);
+  
+  // Push medication name and dosage to respective arrays
+  medications.push(medName.replace(dosage, '').trim());
+  dosages.push(dosage);
+});
+
+console.log('Medications:', medications);
+console.log('Dosages:', dosages);
 
           ret.resolve(p);
         });
