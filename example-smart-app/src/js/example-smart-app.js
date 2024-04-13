@@ -7,17 +7,7 @@
       ret.reject();
     }
 
-// Extracting the required information
-var dateWritten = medication.dateWritten;
-var dosageInstruction = medication.dosageInstruction.text;
-var status = medication.status;
-var resourceType = medication.resourceType;
 
-// Displaying the information in the UI
-document.getElementById('dateWritten').innerText = 'Date Written: ' + dateWritten;
-document.getElementById('dosageInstruction').innerText = 'Dosage Instruction: ' + dosageInstruction;
-document.getElementById('status').innerText = 'Status: ' + status;
-document.getElementById('resourceType').innerText = 'Resource Type: ' + resourceType;
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
