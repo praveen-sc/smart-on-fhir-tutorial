@@ -66,9 +66,12 @@
 
           //Medications
            var medications = medication.map(function(med) {
-            med.medicationCodeableConcept.additionalInstruction
             return med.medicationCodeableConcept.text;
           });
+          var medicationsfilter = medication.filter(function(med1){
+            return med1.dosage.text
+          })
+          console.log(medicationsfilter)
           console.log('Medications:', medications);
           p.medications = medications.join(', ');
 
